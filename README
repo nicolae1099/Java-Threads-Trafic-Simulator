@@ -1,0 +1,64 @@
+331CA Nitu Nicolae-Iulian Tema2APD
+
+Am facut modificari doar in clasa IntersectionHandlerFactory si ReaderHandlerFactory.
+
+Task1 simple_semaphore
+    Am declarat un semafor in Main
+    Am dat mesajul de output, apoi am dat sleep cu timpul din input
+    Apoi iar mesajul ca au iesit masinile
+
+Task2 simple_n_roundabout
+    Similar cu task1.
+    Ultima linie din fisierul din input am citit-o in ReaderHandlerFactory
+    Am folosit un semafor cu maxim Main.maxCars permise.
+
+Task3 simple_strict_1_car_roundabout
+    Am facut o lista de semafoare. Fiecare semafor are 1 permis.
+    Am cate un semafor pt fiecare directie
+    Am pus o bariera ca sa ma asigur ca toate masinile au dat mesaj de "enter"
+    apoi am dat mesaj de exit
+
+Task4 simple_strict_x_car_roundabout
+    Am pus toate masinile sa astepte la bariera ca sa dea mesaju de "reach"
+    Am folosit o lista de semafoare. Fiecare semafor are X permise.
+    Dupa mesajele de output, am pus cate o bariera pt toate masinile
+
+Task5 simple_max_x_car_roundabout
+    Am folosit o lista de semafoare. Fiecare semafor are X permise.
+    Spre deosebire de task4, n-am mai pus bariere deoarece nu 
+        conteaza daca mai ajung masini la girator in timp ce altele sunt intrate sau ies din el.
+
+Task6 priority_intersection
+    Am folosit 2 liste pt a salva masinile cu prioritati mare/redusa.
+    Masinile cu prioritate redusa pot intra in intersectie doar atunci cand
+    lista de masini cu prioritate ridicate e goala
+
+    Masinile cu prioritate ridicata intra in intersectie fara restrictii
+
+Task7 crosswalk
+    Cat timp isFinished e false
+        Daca pietonii pot sa treaca atunci dau mesaj de "Red light"
+        si pun masinile pe wait()
+
+        Atunci cand pietonii au terminat de trecut,
+        in clasa Pedestrians dau notifyAll pt a informa masinile ca e culoarea verde
+
+        Daca pietonii nu pot trece atunci dau mesaj de "Green Light"
+
+    Am si o variabile isRed pt a tine cont care a fost ultima culoare de la semafor
+    Ma folosesc si de lista markedCarList pt a afisa masinile cu msg de "Green"
+        si setez aparitia lor pe false.
+    Apoi daca markedCarList e pe false, stiu ca trebuie sa afisez msg de "Red Light" si
+        setez aparitia lor pe true.
+
+Task10 railroad
+    Dau mesaj de output
+    Salvez id ul masinilor in ordine intr-un blockingQueue.
+    Pun o bariera pt toate masinile
+    Dau mesajul cu "train has passed " doar de catre un singur thread.
+    Cat timp ultimul element din coada nu corespunde cu id ul masinii curente,
+        atunci dau Monitor.class.wait().
+    Cand iese din acel while, sterg elementul respectiv din coada si il afisez
+        si dau Monitor.class.notify
+
+
